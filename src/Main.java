@@ -19,16 +19,20 @@ public class Main {
                switch(secim){
                    case 1:{
                        newAccount.register();
-                       break;
                    }
+                       break;
 
                    case 2:{
                        newAccount.depositMoney();
-                       break;}
+
+                   }
+                       break;
+
                    case 3:{
                            newAccount.withdrowMoney();
-                           break;
-                       }
+                   }
+                        break;
+
                    default:
                        System.out.println("Girdiyiniz secim duzgun deyil");
                        break;
@@ -36,8 +40,9 @@ public class Main {
            }
            else{
                System.out.println("Yanlis sorgu");
-               scanner.next();
+               scanner.nextDouble();
            }
        }
+
     }
 }

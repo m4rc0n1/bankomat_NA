@@ -38,38 +38,43 @@ public class NewAccount {
         this.balance = 0.0;
         System.out.println(name +  " " + surname + " " + " adli hesab yaradildi, cari balans " + balance + " " + valyuta.getValyutaAd());
     }
-    public void depositMoney(){
-        Scanner scanner1 = new Scanner(System.in);
+    public double depositMoney(){
+        Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("Zehmet olmasa meblegi daxil edin: ");
-            double balance = scanner1.nextDouble();
-            this.balance = 0.0;
+            double balance = scanner.nextDouble();
+            this.balance = scanner.nextDouble();
             if (balance > 0) {
                 balance += balance;
                 System.out.println("Depozit uğurla həyata keçirildi.");
             } else {
                 System.out.println("Depozit üçün müsbət məbləğ daxil edin.");
+//                this.balance=balance;
+//                break;
             }
             System.out.println("Cari balans: " + balance);
         }
-        }
+    }
 
-        public void withdrowMoney() {
-        Scanner scanner2 = new Scanner(System.in);
+    public double getBalance() {
+        return balance;
+    }
+
+    public double withdrowMoney() {
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Zehmet olmasa cixarmaq istediyiz meblegi daxil edin: ");
-            double balance = scanner2.nextDouble();
+            double balance = scanner.nextDouble();
             this.balance = 0.0;
             if (balance > 0 && balance <= balance) {
                 balance -= balance;
                 System.out.println("Çıxarış uğurla həyata keçirildi.");
-            } else if (balance <= 0) {
-                System.out.println("Çıxarış üçün duzgun məbləğ daxil edin.");
+//            } else if (balance <= 0) {
+//                System.out.println("Çıxarış üçün duzgun məbləğ daxil edin.");
             } else {
                 System.out.println("Balansda kifayət qədər vəsait yoxdur.");
             }
             System.out.println("Cari balans: " + balance);
         }
     }
-
 }
