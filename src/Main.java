@@ -17,22 +17,23 @@ public class Main {
            if(scanner.hasNextInt()){
                secim = scanner.nextInt();
                switch(secim){
-                   case 1:{
+                   case 1: {
                        newAccount.register();
-                   }
                        break;
+                   }
 
-                   case 2:{
+                   case 2: {
                        newAccount.depositMoney();
-
-                   }
                        break;
-
-                   case 3:{
-                           newAccount.withdrowMoney();
                    }
-                        break;
-
+                   case 3: {
+                       newAccount.withdrawMoney();
+                       break;
+                   }
+                   case 4:{
+                       newAccount.viewAccountBalance();
+                       break;
+                   }
                    default:
                        System.out.println("Girdiyiniz secim duzgun deyil");
                        break;
