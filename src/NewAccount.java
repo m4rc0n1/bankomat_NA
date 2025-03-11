@@ -115,4 +115,34 @@ public class NewAccount {
             }
         }
     }
+    public void changePin() {
+        if(!isAccountCreated){
+            System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            return;
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zehmet olmasa pin codu deyismek ucun ekrana yeni 4 reqemli pin daxil edin: ");
+        while (true) {
+            if(scanner.hasNextInt()){
+                int yenipin = scanner.nextInt();
+                if(yenipin==this.pin){
+                    System.out.println("Yeni pin kohne pin ola bilmez");
+                    return;
+                }
+                if(yenipin <1000 || yenipin >9999) {
+                    System.out.println("Girdiyiniz pin 4 reqemli deyil");
+                    scanner.next();
+                }
+                else {
+                    this.pin = yenipin;
+                    System.out.println("Yeni pin yaradildi");
+                    break;
+                }
+            }
+            else{
+                System.out.println("Zehmet olmazsa reqem daxil edin.");
+                scanner.next();
+            }
+        }
+    }
 }
