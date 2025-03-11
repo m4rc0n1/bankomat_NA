@@ -17,8 +17,21 @@ public class Main {
            if(scanner.hasNextInt()){
                secim = scanner.nextInt();
                switch(secim){
-                   case 1:{
+                   case 1: {
                        newAccount.register();
+                       break;
+                   }
+
+                   case 2: {
+                       newAccount.depositMoney();
+                       break;
+                   }
+                   case 3: {
+                       newAccount.withdrawMoney();
+                       break;
+                   }
+                   case 4:{
+                       newAccount.viewAccountBalance();
                        break;
                    }
                    default:
@@ -28,8 +41,9 @@ public class Main {
            }
            else{
                System.out.println("Yanlis sorgu");
-               scanner.next();
+               scanner.nextDouble();
            }
        }
+
     }
 }

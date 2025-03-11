@@ -14,7 +14,7 @@ public enum ValyutaType {
     }
 
     public static ValyutaType fromString(String valyuta){
-        switch(valyuta){
+        switch(valyuta.toUpperCase()){
             case "AZN": return AZN;
             case "USD": return USD;
             case "EUR": return EUR;
