@@ -34,6 +34,10 @@ public class Main {
                        newAccount.viewAccountBalance();
                        break;
                    }
+                   case 5:{
+                       newAccount.changePin();
+                       break;
+                   }
                    default:
                        System.out.println("Girdiyiniz secim duzgun deyil");
                        break;
@@ -42,6 +46,8 @@ public class Main {
            else{
                System.out.println("Yanlis sorgu");
                scanner.nextDouble();
+
+              newAccount.waitResponse(1);
            }
        }
 

@@ -10,10 +10,21 @@ public class NewAccount {
     private String cariBalanceMessage() {
        return isAccountCreated ? "Cari balans: " + balance + " " + valyuta.getValyutaAd() : "";
     }
+public void waitResponse(int seconds){
 
+        try {
+            Thread.sleep(seconds * 1000);
+        }
+        catch (InterruptedException e){
+         throw new RuntimeException(e);
+        }
+
+
+}
     public void register(){
         if(isAccountCreated){
             System.out.println("Istifadeci artiq yaradilib. Istifadeci adi: " + name);
+            waitResponse(1);
             return;
         }
         Scanner scanner = new Scanner(System.in);
@@ -56,10 +67,12 @@ public class NewAccount {
         System.out.println(name +  " " + surname + " " + " adli hesab yaradildi, cari balans "
                 + balance + " " + valyuta.getValyutaAd());
         isAccountCreated = true;
+        waitResponse(1);
     }
     public void depositMoney(){
         if(!isAccountCreated ){
             System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            waitResponse(1);
             return;
         }
         Scanner scanner = new Scanner(System.in);
@@ -81,18 +94,22 @@ public class NewAccount {
                scanner.next();
            }
         }
+        waitResponse(1);
     }
     public void viewAccountBalance() {
         if(!isAccountCreated){
             System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            waitResponse(1);
             return;
         }
         System.out.println(cariBalanceMessage());
+
     }
 
     public void withdrawMoney() {
         if(!isAccountCreated){
             System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            waitResponse(1);
             return;
         }
         Scanner scanner = new Scanner(System.in);
@@ -114,35 +131,49 @@ public class NewAccount {
                 scanner.next();
             }
         }
+        waitResponse(1);
     }
     public void changePin() {
         if(!isAccountCreated){
             System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            waitResponse(1);
             return;
         }
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Zehmet olmasa pin codu deyismek ucun ekrana yeni 4 reqemli pin daxil edin: ");
+        System.out.println("Zehmet olmasa pin codu deyismek ucun Ad  daxil edin : ");
         while (true) {
-            if(scanner.hasNextInt()){
-                int yenipin = scanner.nextInt();
-                if(yenipin==this.pin){
-                    System.out.println("Yeni pin kohne pin ola bilmez");
-                    return;
+            String name = scanner.nextLine();
+            if(name.equals(this.name) ){
+                while (true){
+                    if(scanner.hasNextInt()){
+                        int yenipin = scanner.nextInt();
+                        scanner.nextLine();
+                        if(yenipin==this.pin){
+                            System.out.println("Yeni pin kohne pin ola bilmez");
+                            return;
+                        }
+                        if(yenipin <1000 || yenipin >9999) {
+                            System.out.println("Girdiyiniz pin 4 reqemli deyil");
+//                    scanner.nextInt();
+                        }
+                        else {
+                            this.pin = yenipin;
+                            System.out.println("Yeni pin yaradildi");
+                            break;
+                        }
+                    }
+                    else{
+                        System.out.println("Zehmet olmazsa reqem daxil edin.");
+                        scanner.next();
+                    }
                 }
-                if(yenipin <1000 || yenipin >9999) {
-                    System.out.println("Girdiyiniz pin 4 reqemli deyil");
-                    scanner.next();
-                }
-                else {
-                    this.pin = yenipin;
-                    System.out.println("Yeni pin yaradildi");
-                    break;
-                }
+                break;
             }
-            else{
-                System.out.println("Zehmet olmazsa reqem daxil edin.");
-                scanner.next();
+            else {
+                System.out.println("Zehmet olmasa adi duzgun qeyd edin" );
             }
+
         }
+        waitResponse(1);
     }
 }
