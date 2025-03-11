@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bankomat_NA.iml" filepath="$PROJECT_DIR$/bankomat_NA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bankomat_NA1/bankomat_NA1.iml" filepath="$PROJECT_DIR$/../bankomat_NA1/bankomat_NA1.iml" />
     </modules>
   </component>
 </project>
