@@ -7,6 +7,7 @@ public class NewAccount {
     private ValyutaType valyuta;
     private double balance;
     private boolean isAccountCreated = false;
+    private String delete;
     private String cariBalanceMessage() {
        return isAccountCreated ? "Cari balans: " + balance + " " + valyuta.getValyutaAd() : "";
     }
@@ -176,4 +177,33 @@ public void waitResponse(int seconds){
         }
         waitResponse(1);
     }
+    public void deleteAccount() {
+        if (!isAccountCreated) {
+            System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            waitResponse(1);
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zehmet olmasa accountu silmek ucun Ad daxil edin: ");
+
+        while (true) {
+            String name = scanner.nextLine();
+            System.out.println("Zehmet olmasa accountu silmek ucun PIN kodunu daxil edin: ");
+            int pin = scanner.nextInt();
+
+            if (name.equals(this.name)) {
+                if (pin == this.pin) {
+                    System.out.println("Emeliyyet ugurla basa catdi");
+                    return;
+                } else {
+                    System.out.println(" Yeniden cehd edin");
+                }
+            } else {
+                System.out.println("Ugursuz emeliyyet. Yeniden cehd edin");
+            }
+        }
+    }
+
+
 }
