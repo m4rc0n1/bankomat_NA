@@ -38,6 +38,10 @@ public class Main {
                        newAccount.changePin();
                        break;
                    }
+                   case 6:{
+                       newAccount.deleteAccount();
+                       break;
+                   }
                    default:
                        System.out.println("Girdiyiniz secim duzgun deyil");
                        break;
