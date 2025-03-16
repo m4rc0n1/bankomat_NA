@@ -150,7 +150,6 @@ public void waitResponse(int seconds){
                         }
                         if(yenipin <1000 || yenipin >9999) {
                             System.out.println("Girdiyiniz pin 4 reqemli deyil");
-//                    scanner.nextInt();
                         }
                         else {
                             this.pin = yenipin;
@@ -168,7 +167,6 @@ public void waitResponse(int seconds){
             else {
                 System.out.println("Zehmet olmasa adi duzgun qeyd edin" );
             }
-
         }
         waitResponse(1);
     }
