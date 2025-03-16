@@ -18,8 +18,6 @@ public void waitResponse(int seconds){
         catch (InterruptedException e){
          throw new RuntimeException(e);
         }
-
-
 }
     public void register(){
         if(isAccountCreated){
@@ -103,9 +101,7 @@ public void waitResponse(int seconds){
             return;
         }
         System.out.println(cariBalanceMessage());
-
     }
-
     public void withdrawMoney() {
         if(!isAccountCreated){
             System.out.println("Zehmet olmasa qeydiyyatdan kecin");
@@ -154,7 +150,6 @@ public void waitResponse(int seconds){
                         }
                         if(yenipin <1000 || yenipin >9999) {
                             System.out.println("Girdiyiniz pin 4 reqemli deyil");
-//                    scanner.nextInt();
                         }
                         else {
                             this.pin = yenipin;
@@ -172,8 +167,31 @@ public void waitResponse(int seconds){
             else {
                 System.out.println("Zehmet olmasa adi duzgun qeyd edin" );
             }
-
         }
         waitResponse(1);
     }
+    public void deleteAccount() {
+        if (!isAccountCreated) {
+            System.out.println("Zehmet olmasa qeydiyyatdan keçin.");
+            waitResponse(1);
+            return;
+        }
+        if (this.balance > 0) {
+            System.out.println("Hesabda pul olduğu üçün hesabi silmek mümkün deyil.");
+            return;
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zehmet olmasa hesabınızı silmək üçün PIN kodunu daxil edin: ");
+        int pin = scanner.nextInt();
+
+        if (pin == this.pin) {
+            System.out.println("Hesab silindi.");
+            isAccountCreated = false;
+            System.out.println("Yeni qeydiyyat üçün daxil olmalısınız.");
+        } else {
+            System.out.println("PIN kodu yanlışdır. Yenidən cəhd edin.");
+        }
+    }
+
+
 }
