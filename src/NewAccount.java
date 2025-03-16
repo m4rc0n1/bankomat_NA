@@ -7,7 +7,6 @@ public class NewAccount {
     private ValyutaType valyuta;
     private double balance;
     private boolean isAccountCreated = false;
-    private String delete;
     private String cariBalanceMessage() {
        return isAccountCreated ? "Cari balans: " + balance + " " + valyuta.getValyutaAd() : "";
     }
@@ -19,8 +18,6 @@ public void waitResponse(int seconds){
         catch (InterruptedException e){
          throw new RuntimeException(e);
         }
-
-
 }
     public void register(){
         if(isAccountCreated){
@@ -104,9 +101,7 @@ public void waitResponse(int seconds){
             return;
         }
         System.out.println(cariBalanceMessage());
-
     }
-
     public void withdrawMoney() {
         if(!isAccountCreated){
             System.out.println("Zehmet olmasa qeydiyyatdan kecin");
@@ -179,29 +174,25 @@ public void waitResponse(int seconds){
     }
     public void deleteAccount() {
         if (!isAccountCreated) {
-            System.out.println("Zehmet olmasa qeydiyyatdan kecin");
+            System.out.println("Zehmet olmasa qeydiyyatdan keçin.");
             waitResponse(1);
             return;
         }
-
+        if (this.balance > 0) {
+            System.out.println("Hesabda pul olduğu üçün hesabi silmek mümkün deyil.");
+            return;
+        }
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Zehmet olmasa accountu silmek ucun Ad daxil edin: ");
+        System.out.println("Zehmet olmasa hesabınızı silmək üçün PIN kodunu daxil edin: ");
+        int pin = scanner.nextInt();
 
-        while (true) {
-            String name = scanner.nextLine();
-            System.out.println("Zehmet olmasa accountu silmek ucun PIN kodunu daxil edin: ");
-            int pin = scanner.nextInt();
-
-            if (name.equals(this.name)) {
-                if (pin == this.pin) {
-                    System.out.println("Emeliyyet ugurla basa catdi");
-                    return;
-                } else {
-                    System.out.println(" Yeniden cehd edin");
-                }
-            } else {
-                System.out.println("Ugursuz emeliyyet. Yeniden cehd edin");
-            }
+        if (pin == this.pin) {
+            // Hesabın silinməsi
+            System.out.println("Hesab silindi.");
+            isAccountCreated = false;
+            System.out.println("Yeni qeydiyyat üçün daxil olmalısınız.");
+        } else {
+            System.out.println("PIN kodu yanlışdır. Yenidən cəhd edin.");
         }
     }
 

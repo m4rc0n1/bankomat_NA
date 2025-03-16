@@ -21,7 +21,6 @@ public class Main {
                        newAccount.register();
                        break;
                    }
-
                    case 2: {
                        newAccount.depositMoney();
                        break;
