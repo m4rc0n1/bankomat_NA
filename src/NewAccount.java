@@ -187,7 +187,6 @@ public void waitResponse(int seconds){
         int pin = scanner.nextInt();
 
         if (pin == this.pin) {
-            // Hesabın silinməsi
             System.out.println("Hesab silindi.");
             isAccountCreated = false;
             System.out.println("Yeni qeydiyyat üçün daxil olmalısınız.");
