@@ -21,7 +21,6 @@ public class Main {
                        newAccount.register();
                        break;
                    }
-
                    case 2: {
                        newAccount.depositMoney();
                        break;
@@ -36,6 +35,10 @@ public class Main {
                    }
                    case 5:{
                        newAccount.changePin();
+                       break;
+                   }
+                   case 6:{
+                       newAccount.deleteAccount();
                        break;
                    }
                    default:
